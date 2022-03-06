@@ -1,4 +1,3 @@
-@ -0,0 +1,152 @@
 let BigHearts = [];
 let fr = 20; //starting FPS
 let clr;
