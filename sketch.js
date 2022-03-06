@@ -26,6 +26,9 @@ function draw() {
 if (sketchStarted) {
   background(255);
 
+  // MICROPHONE
+  micVar = mic.getLevel();
+  sideEye = map(mic.getLevel(), 0, 0.1, 0, 1);
   // Hearts Moving
 
   for (let i = 0; i < 5; i++) {
@@ -42,10 +45,6 @@ if (sketchStarted) {
     BigHearts[i].display();
     BigHearts[i].move();
   }
-
-  // MICROPHONE
-  micVar = mic.getLevel();
-  sideEye = map(mic.getLevel(), 0, 0.1, 0, 1);
 
   drawBlush();
   drawFaceShape();
