@@ -48,9 +48,6 @@ if (sketchStarted) {
     BigHearts[i] = new hearts(x, y);
   }
 
-    frameRate(fr);
-    clr = color("pink");
-    noStroke();
     // hearts Moving Animation
   for (let i = 0; i < 5; i++) {
     BigHearts[i].display();
@@ -107,10 +104,6 @@ class hearts{
   constructor(xpos, ypos) {
    // this.xpos = xpos;
    // this.ypos = ypos;
-
-    // OG
-  this.t = int(random(90));
-  this.s = random(-1, 1);
 
     // NEW
    this.t = int(random(360));
