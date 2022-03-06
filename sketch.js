@@ -1,15 +1,14 @@
+@ -0,0 +1,152 @@
 let BigHearts = [];
 let fr = 20; //starting FPS
 let clr;
 let mic;
 let micVar;
 let look;
-let sketchStarted = false;
 
 function setup() {
   createCanvas(400, 400);
-  angleMode(DEGREES);
-  createButton("Start").mousePressed(startSketch);
+
 
 // Hearts Moving
 
@@ -19,56 +18,52 @@ for (let i = 0; i < 5; i++) {
   BigHearts[i] = new hearts(x, y);
 }
 
-
-function startSketch(){
+  frameRate(fr);
+  clr = color("pink");
+  noStroke();
 
   // Microphone
   mic = new p5.AudioIn();
   mic.start();
-
-  sketchStarted = true;
+  angleMode(DEGREES);
 }
+
+
 
 function draw() {
-
-if(sketchStarted) {
   background(255);
-  frameRate(fr);
-  clr = color("pink");
-  noStroke();
-  // hearts Moving Animation
-for (let i = 0; i < 5; i++) {
-  BigHearts[i].display();
-  BigHearts[i].move();
-}
 
-// MICROPHONE
-micVar = mic.getLevel();
-sideEye = map(mic.getLevel(), 0, 0.1, 0, 1);
 
-if (mouseX > 125 && mouseX < 275) {
-  if (mouseY > 160 && mouseY < 200) {
-    look = 1;
-    console.log("high");
+    // hearts Moving Animation
+  for (let i = 0; i < 5; i++) {
+    BigHearts[i].display();
+    BigHearts[i].move();
+  }
+
+  // MICROPHONE
+  micVar = mic.getLevel();
+  sideEye = map(mic.getLevel(), 0, 0.1, 0, 1);
+
+  if (mouseX > 125 && mouseX < 275) {
+    if (mouseY > 160 && mouseY < 200) {
+      look = 1;
+      console.log("high");
+    } else {
+      look = 0;
+      console.log("high");
+    }
   } else {
     look = 0;
-    console.log("high");
   }
-} else {
-  look = 0;
-}
 
 
 
-drawBlush();
-drawFaceShape();
-if (look == 1) {
   drawBlush();
-}
-drawEyes();
-
-}
-
+  drawFaceShape();
+  if (look == 1) {
+    drawBlush();
+  }
+  drawEyes();
 
   function drawFaceShape() {
     //Face Shape:
