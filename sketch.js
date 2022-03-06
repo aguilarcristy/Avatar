@@ -29,6 +29,17 @@ if (sketchStarted) {
   // MICROPHONE
   micVar = mic.getLevel();
   sideEye = map(mic.getLevel(), 0, 0.1, 0, 1);
+  if (mouseX > 125 && mouseX < 275) {
+    if (mouseY > 160 && mouseY < 200) {
+      look = 1;
+      console.log("high");
+    } else {
+      look = 0;
+      console.log("high");
+    }
+  } else {
+    look = 0;
+  }
   // Hearts Moving
 
   for (let i = 0; i < 5; i++) {
@@ -52,18 +63,6 @@ if (sketchStarted) {
     drawBlush();
   }
   drawEyes();
-
-  if (mouseX > 125 && mouseX < 275) {
-    if (mouseY > 160 && mouseY < 200) {
-      look = 1;
-      console.log("high");
-    } else {
-      look = 0;
-      console.log("high");
-    }
-  } else {
-    look = 0;
-  }
 }
 
   function drawFaceShape() {
