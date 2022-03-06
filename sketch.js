@@ -25,21 +25,17 @@ function startSketch(){
   // Microphone
   mic = new p5.AudioIn();
   mic.start();
-  sketchStarted = true;
 
+  sketchStarted = true;
 }
+
+function draw() {
+
+if(sketchStarted) {
+  background(255);
   frameRate(fr);
   clr = color("pink");
   noStroke();
-
-
-
-function draw() {
-  background(255);
-
-if(sketchStarted) {
-
-
   // hearts Moving Animation
 for (let i = 0; i < 5; i++) {
   BigHearts[i].display();
@@ -70,8 +66,6 @@ if (look == 1) {
   drawBlush();
 }
 drawEyes();
-
-
 
 }
 
