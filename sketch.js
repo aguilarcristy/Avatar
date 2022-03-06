@@ -4,11 +4,13 @@ let clr;
 let mic;
 let micVar;
 let look;
+let sketchStarted = false;
 
 function setup() {
   createCanvas(400, 400);
-  
-  
+  angleMode(DEGREES);
+  createButton("Start").mousePressed(startSketch);
+
 // Hearts Moving
 
 for (let i = 0; i < 5; i++) {
@@ -16,53 +18,63 @@ for (let i = 0; i < 5; i++) {
   let y = random(height * 0.25, height * 0.025);
   BigHearts[i] = new hearts(x, y);
 }
-  
-  frameRate(fr);
-  clr = color("pink");
-  noStroke();
-  
+
+
+function startSketch(){
+
   // Microphone
   mic = new p5.AudioIn();
   mic.start();
-  angleMode(DEGREES);
+  sketchStarted = true;
+
 }
+  frameRate(fr);
+  clr = color("pink");
+  noStroke();
 
 
 
 function draw() {
   background(255);
 
-  
-    // hearts Moving Animation
-  for (let i = 0; i < 5; i++) {
-    BigHearts[i].display();
-    BigHearts[i].move();
-  }
-  
-  // MICROPHONE
-  micVar = mic.getLevel();
-  sideEye = map(mic.getLevel(), 0, 0.1, 0, 1);
+if(sketchStarted) {
 
-  if (mouseX > 125 && mouseX < 275) {
-    if (mouseY > 160 && mouseY < 200) {
-      look = 1;
-      console.log("high");
-    } else {
-      look = 0;
-      console.log("high");
-    }
+
+  // hearts Moving Animation
+for (let i = 0; i < 5; i++) {
+  BigHearts[i].display();
+  BigHearts[i].move();
+}
+
+// MICROPHONE
+micVar = mic.getLevel();
+sideEye = map(mic.getLevel(), 0, 0.1, 0, 1);
+
+if (mouseX > 125 && mouseX < 275) {
+  if (mouseY > 160 && mouseY < 200) {
+    look = 1;
+    console.log("high");
   } else {
     look = 0;
+    console.log("high");
   }
+} else {
+  look = 0;
+}
 
 
 
+drawBlush();
+drawFaceShape();
+if (look == 1) {
   drawBlush();
-  drawFaceShape();
-  if (look == 1) {
-    drawBlush();
-  }
-  drawEyes();
+}
+drawEyes();
+
+
+
+}
+
 
   function drawFaceShape() {
     //Face Shape:
@@ -101,23 +113,23 @@ function draw() {
     pop();
   }
 }
-  
+
 class hearts{
   constructor(xpos, ypos) {
    // this.xpos = xpos;
    // this.ypos = ypos;
-    
-    // OG 
+
+    // OG
   this.t = int(random(90));
   this.s = random(-1, 1);
-    
+
     // NEW
    this.t = int(random(360));
    this.s = random(-2, 2);
   }
 
   display() {
-    
+
     push();
     translate(this.xpos, this.ypos);
     rotate(this.t);
@@ -148,5 +160,5 @@ class hearts{
 
   move() {
     this.t = this.t + this.s}
-  
+
 }
