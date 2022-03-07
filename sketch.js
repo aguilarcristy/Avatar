@@ -2,7 +2,7 @@ let BigHearts = [];
 let fr = 20; //starting FPS
 let clr;
 let mic;
-let micVar;
+let micVar = 0;
 let look;
 let sketchStarted = false;
 
