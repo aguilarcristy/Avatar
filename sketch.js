@@ -10,6 +10,15 @@ function setup() {
   createCanvas(400, 400);
   angleMode(DEGREES);
   createButton("Start").mousePressed(startSketch);
+
+  // Hearts Moving
+
+  for (let i = 0; i < 5; i++) {
+    let x = random(width * 0.25, width * 0.25);
+    let y = random(height * 0.25, height * 0.025);
+    BigHearts[i] = new hearts(x, y);
+  }
+
 }
 
 function startSketch() {
@@ -40,13 +49,7 @@ if (sketchStarted) {
   } else {
     look = 0;
   }
-  // Hearts Moving
 
-  for (let i = 0; i < 5; i++) {
-    let x = random(width * 0.25, width * 0.25);
-    let y = random(height * 0.25, height * 0.025);
-    BigHearts[i] = new hearts(x, y);
-  }
 
     // hearts Moving Animation
   for (let i = 0; i < 5; i++) {
