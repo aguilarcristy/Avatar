@@ -105,6 +105,7 @@ class hearts{
    // this.xpos = xpos;
    // this.ypos = ypos;
 
+
     // NEW
    this.t = int(random(360));
    this.s = random(-2, 2);
