@@ -6,11 +6,13 @@ let mic;
 let sideEye = 0;
 let look;
 let sketchStarted = false;
+let button;
 
 function setup() {
   createCanvas(400, 400);
   angleMode(DEGREES);
-  createButton("Start").mousePressed(startSketch);
+  button = createButton("Start");
+  button.mousePressed(startSketch);
 
   // Hearts Moving
 
