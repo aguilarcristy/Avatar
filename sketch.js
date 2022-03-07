@@ -2,7 +2,8 @@ let BigHearts = [];
 let fr = 20; //starting FPS
 let clr;
 let mic;
-let micVar = 0;
+//let micVar = 0;
+let sideEye = 0;
 let look;
 let sketchStarted = false;
 
@@ -36,7 +37,7 @@ if (sketchStarted) {
   background(255);
 
   // MICROPHONE
-  micVar = mic.getLevel();
+//  micVar = mic.getLevel();
   sideEye = map(mic.getLevel(), 0, 0.1, 0, 1);
   if (mouseX > 125 && mouseX < 275) {
     if (mouseY > 160 && mouseY < 200) {
